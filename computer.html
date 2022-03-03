@@ -19,12 +19,31 @@
     
         <input type="button" onclick="orderComputer()" value="Order a computer">
     </form>
+    <form>
+    <br>
+    <input type="text" id="prop" name="prop" value="engraved">
+    <label for="prop">Enter a property name</label></br>
+    
+
+    <input type="text" id="prop_value" name="prop_value">
+    <label for="prop_value">Enter a value</label></br>
+    <br>
+    <input type="button" value="Update the computer" onclick="updateComputer()">
+    </form>
     <p id="result">This text will be replaced </p>
     <script>
+   function updateComputer()
+    {
+       var prop_1= document.getElementById("prop").value
+       var prop1_value= document.getElementById("prop_value").value
+       my_Computer[prop_1]=prop1_value
+       out.innerHTML = "my_Computer[]=  " + JSON.stringify(my_Computer);
+       
+    }
         var my_Computer = {}
         out = document.getElementById("result")
 
-        function orderComputer() {
+    function orderComputer() {
              my_Computer = {}
             console.log("Getting form values")
             extra = document.getElementById("check_1").checked
