@@ -29,9 +29,46 @@
 
 
   
-
+ <br>
+ <form class="p-3 mb-2 bg-white text-dark">
+     <div > 
+     <input class="radio" type="radio" id="radio_1" name="radio_1" value="times" onclick="chooseOp()">
+     <label for="radio_1">*</label></br>
+ 
+     <input class="radio" type="radio" id="radio_2" name="radio_1" onclick="chooseOp()" value="divide">
+     <label for="radio_2">/</label></br>
+ 
+     <input class="radio" type="radio" id="radio_3" name="radio_1" onclick="chooseOp()" value="exponent">
+     <label for="radio_3">**</label></br>
+ </div>
+ 
+ </form>
+ 
+ <p class="bg-dark text-white" id="results">operation result</p>
+ 
 
 <script> 
+        
+
+function chooseOp() {
+            var amount = document.getElementById("check").value
+            var tip = document.getElementById("tip").value
+            exponent = document.getElementById("radio_3").checked
+            times = document.getElementById("radio_1").checked
+            divide = document.getElementById("radio_2").checked
+
+            if (exponent) {
+                document.getElementById('results').innerHTML = "(amount ** Tip) value is:" + amount ** tip
+            }
+
+            else if (times) {
+                document.getElementById('results').innerHTML = "(amount * Tip) value is:" + amount * tip
+            }
+            else if (divide) {
+
+                document.getElementById('results').innerHTML = "(amount / Tip) value is:" + amount / tip
+            }
+        }
 
         function tips() {
             console.log("Getting form values")
