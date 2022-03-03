@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>COMPUTER</title>
+    </head>
+<body>
+
+    <h2>YogaNarasimhaReddy Peddireddy orders a computer</h2>
+
+    <form>
+        <input type="checkbox" id="check_1" name="check_1" value="extra">
+        <label for="check_1">Extra memory</label></br>
+    
+        <input type="checkbox" id="check_2" name="check_2" value="mouse">
+        <label for="check_2">Mouse</label></br>
+    
+        <input type="checkbox" id="check_3" name="check_3" value="cell">
+        <label for="check_3">Cell service</label></br>
+    
+        <input type="button" onclick="orderComputer()" value="Order a computer">
+    </form>
+    <p id="result">This text will be replaced </p>
+    <script>
+        var my_Computer = {}
+        out = document.getElementById("result")
+
+        function orderComputer() {
+             my_Computer = {}
+            console.log("Getting form values")
+            extra = document.getElementById("check_1").checked
+            mouse = document.getElementById("check_2").checked
+            cell = document.getElementById("check_3").checked
+
+            
+            if (extra) {
+                my_Computer.extra = true
+            }else{
+                my_Computer.extra = false
+            }
+            if (mouse) {
+                my_Computer.mouse = true
+            }
+            else
+            {
+                my_Computer.mouse = false
+            }
+            if (cell) {
+                my_Computer.cell = true
+            }
+            else
+            {
+                my_Computer.cell=false
+            }
+            document.getElementById("result").innerHTML = "extra: " + my_Computer.extra + " mouse: " + my_Computer.mouse + " cell: " + my_Computer.cell
+        }
+    </script>
+
+</body>
+</html> 
