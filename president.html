@@ -1,73 +1,111 @@
 <!DOCTYPE html>
 <html>
- <head>
-     <title>Guess the President</title>
- </head>
+ 
+<head><title>Guess the President</title>
+  <style>
+    label {
+        display: inline-block;
+        width: 175px;
+    }
+    
+    p {
+        background-color: rgb(144, 227, 241);
+        color: black;
+        display: inline;
+    }
+    
+    p:hover {
+        background-color: rgb(233, 127, 101);
+        color: black;
+        display: inline;
+    }
+    
+    h2 {
+        background-color: rgb(228, 80, 203);
+        color: rgb(15, 2, 6);
+        display: inline-block;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    </style>
+</head>
 <body>
 
-<h1>President guess by YogaNarasimhaReddy Peddireddy</h1>
-<h2>Getting input</h2>
+<h2>President guess by YogaNarasimhaReddy Peddireddy</h2>
 
 <form>
-    <label for="form1_age">Enter the secret president name</label>
-    <input type ="password" id="secret" name="secret_name" min=10 max=50 step=2 value="George Washington"> <br>
+    <label for="form1_presidentname">Enter the secret president name</label>
+    <input type ="password" id="form1_presidentname" name="form1_presidentname" value="George Washington"> <br>
 
-    <label for="form1_nick">Guess the president</label>
-    <input type ="text" id="input" name="user_input" autofocus> <br>
+    <label for="form1_guess">Guess the president</label>
+    <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
 
-    <input type="button" onclick="checkGuess()" value="Check the guess">
+    <input type="button" onclick="checkGuess()" id="but1" value="Check the guess">
 </form>
 
+<p id="result"></p>
+<br>
+<div clas="container">
+    <img  src="Dusky woodcock2.jpg" alt="Dove" height="100" width="100" id="imageChg" onclick="swapImage()" value=1>
+</div>
 
-<p id="result">This text will be replaced </p>
+
 
 <script> 
 
-function checkGuess (){
+var correct=0;
+var wrong=0;
+var useImage=1;
+
+function  swapImage(){
+
+switch (useImage) {
+    case 1:
+      s= document.getElementById("imageChg").src="Pacific monarch1.JPG";
+      useImage=2;
+      break;
+    case 2:
+    s= document.getElementById("imageChg").src="Red-bellied pitta3.jpg"
+      useImage=3
+        break;
+    case 3:
+    s= document.getElementById("imageChg").src="Dusky woodcock2.jpg"
+      useImage=1
+        break;
+}}
+
+
+
+function checkGuess(){
     console.log("Getting form values")
-    correct=0
-    wrong=0
-    age = document.getElementById("secret").value
-    nick = document.getElementById("input").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    s = document.getElementById("form1_presidentname").value
+    g = document.getElementById("form1_guess").value
+    
     
     out = document.getElementById("result")
-    if(age==nick){
-        correct++
+    if(s==g){
+        correct+=1;
         alert("You got it right")
-        out.innerHTML = "correct count:"+ correct
+        out.innerHTML = correct
+        
+      
     } else {
-        wrong++
-        alert("Wrong President")
-        out.innerHTML = "wrong count:"+ wrong
+        wrong+=1;
+       alert("Wrong President")
+        out.innerHTML = wrong
+        if(wrong >3){
+            lock();
+       }
     }
 }
-</script>
 
-</script>
-<br>    
-<div>
-    <img src="Dusky woodcock2.jpg" id="im" width="100" height="100" onclick="swapImage()">
-    <script>
-        var useImage=1;
-        function swapImage(){
-            switch(useImage){
-                case 1:
-                document.getElementById('im').src="Pacific monarch1.JPG";
-                useImage=2;
-                break;
-                case 2:
-                document.getElementById('im').src="Red-bellied pitta3.jpg";
-                useImage=3;
-                break;
-                case 3:
-                document.getElementById('im').src="Dusky woodcock2.jpg";
-               useImage=1;
-                break;
-            }
+
+
+    function lock(){
+            alert("Sorry, game over.");
+            correct=0;
         }
-    </script>
 
+</script>
 
 </body>
 </html> 
